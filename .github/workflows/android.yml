@@ -27,4 +27,6 @@ jobs:
     - name: Build with Gradle
       run: |
        cd Pharmacy
-        ./gradlew build
+       ./gradlew build
+        
+        
