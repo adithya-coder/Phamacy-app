@@ -152,7 +152,7 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MyView
                         textView.setTextSize(18);
                     }
                     TextView textViewTitle = dialog.findViewById(android.R.id.title);
-                    if (textViewTitle != null) {
+                     if (textViewTitle != null) {
                         textViewTitle.setTextSize(18);
                     }
                 }

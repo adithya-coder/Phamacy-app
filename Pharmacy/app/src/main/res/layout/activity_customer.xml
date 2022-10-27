@@ -51,6 +51,18 @@
                 app:cornerRadius="50pt"
                 tools:ignore="TextContrastCheck" />
 
+            <Button
+                android:id="@+id/category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_round"
+                android:text="Category"
+                android:textColor="@color/colorPrimarywhite"
+                app:cornerRadius="50pt"
+                tools:ignore="TextContrastCheck" />
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
