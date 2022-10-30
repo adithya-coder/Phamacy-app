@@ -208,7 +208,7 @@ public class AddPharmacy extends AppCompatActivity {
      * @param des
      * @param image
      */
-    private void addDataToFirestore(String name, String phone, String email, String location, String des, String image) {
+    void addDataToFirestore(String name, String phone, String email, String location, String des, String image) {
 
         // creating a collection reference
         // for our Firebase Firetore database.

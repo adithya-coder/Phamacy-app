@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,14 +15,13 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
-import com.app.pharmacy.common.CustomerAdapter;
 import com.app.pharmacy.common.PharmacyAdapter;
-import com.app.pharmacy.common.entity.Cosmatic;
+import com.app.pharmacy.common.RequestAdapter;
 import com.app.pharmacy.common.entity.Pharmacy;
+import com.app.pharmacy.common.entity.ProductRequest;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -44,13 +42,12 @@ import java.util.Collections;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class Customer extends AppCompatActivity {
-    //private Button save_button;
+public class RequestApprove extends AppCompatActivity {
     private View topAppBar;
     private FloatingActionButton float_button;
     private RecyclerView view;
-    private ArrayList<Cosmatic> pharmacyArrayList;
-    private CustomerAdapter adapter;
+    private ArrayList<ProductRequest> pharmacyArrayList;
+    private RequestAdapter adapter;
     private FirebaseFirestore db;
     private TextView name, names, username;
     private MaterialToolbar toolbar;
@@ -76,49 +73,7 @@ public class Customer extends AppCompatActivity {
 
             }
         });
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                int id = item.getItemId();
-                drawerLayout.closeDrawer(GravityCompat.START);
-                switch (id) {
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), Owner.class));
 
-                        break;
-                    case R.id.request:
-                        //startActivity(new Intent(getApplicationContext(), Login.class));
-                        TastyToast.makeText(
-                                getApplicationContext(),
-                                "required permission !",
-                                TastyToast.LENGTH_LONG,
-                                TastyToast.WARNING
-                        );
-                        break;
-                    case R.id.add_phar:
-                        TastyToast.makeText(
-                                getApplicationContext(),
-                                "required permission !",
-                                TastyToast.LENGTH_LONG,
-                                TastyToast.WARNING
-                        );
-
-                        break;
-                    case R.id.setting:
-                        startActivity(new Intent(getApplicationContext(), Setting.class));
-                        break;
-                    case R.id.nav_logout:
-                        FirebaseAuth.getInstance().signOut();
-                        startActivity(new Intent(getApplicationContext(), Login.class));
-                        finish();
-                        break;
-                    default:
-                        return true;
-
-                }
-                return true;
-            }
-        });
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
@@ -137,7 +92,7 @@ public class Customer extends AppCompatActivity {
 
                         @Override
                         public boolean onQueryTextChange(String s) {
-                            filter(s);
+                            //filter(s);
                             return false;
                         }
                     });
@@ -155,30 +110,29 @@ public class Customer extends AppCompatActivity {
         name = findViewById(R.id.name);
         view = findViewById(R.id.rcView);
         view.setHasFixedSize(true);
-
         view.setLayoutManager(new LinearLayoutManager(this));
-        //view.setLayoutManager(new LinearLayoutManager(this));
         db = FirebaseFirestore.getInstance();
         getUserDetail();
-        pharmacyArrayList = new ArrayList<Cosmatic>();
-        adapter = new CustomerAdapter(Customer.this, pharmacyArrayList);
+        pharmacyArrayList = new ArrayList<ProductRequest>();
+        adapter = new RequestAdapter(RequestApprove.this, pharmacyArrayList);
 
         float_button = findViewById(R.id.float_button);
 
-        float_button.hide();
-//        float_button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), AddPharmacy.class));
-//            }
-//        });
+
+        float_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AddPharmacy.class));
+            }
+        });
+
         view.setAdapter(adapter);
         EventChangeListener();
     }
 
     private void EventChangeListener() {
         String userId = (FirebaseAuth.getInstance().getCurrentUser().getUid());
-        db.collection("stock").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("request").whereIn("userId", Collections.singletonList(userId)).addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
 
@@ -195,10 +149,10 @@ public class Customer extends AppCompatActivity {
                     //  if(dc.getDocument().getString("userId").toString() == userId.toString()){
                     if (dc.getType() == DocumentChange.Type.ADDED) {
 
-                        Cosmatic pharmacy = dc.getDocument().toObject(Cosmatic.class);
-                        pharmacy.setId(dc.getDocument().getId());
-                        System.out.println("\nimagesssssssss----------------------\n" + pharmacy.getImage());
-                        pharmacyArrayList.add(pharmacy);
+                        ProductRequest request = dc.getDocument().toObject(ProductRequest.class);
+                        request.setId(dc.getDocument().getId());
+//                        System.out.println("\nimagesssssssss----------------------\n" + pharmacy.getImage());
+                        pharmacyArrayList.add(request);
                     }
 
                     // }
@@ -223,35 +177,35 @@ public class Customer extends AppCompatActivity {
 //
 //
 //    }
-    private void filter(String text) {
-        // creating a new array list to filter our data.
-        ArrayList<Cosmatic> filteredlist = new ArrayList<Cosmatic>();
-
-        // running a for loop to compare elements.
-        for (Cosmatic item : pharmacyArrayList) {
-            // checking if the entered string matched with any item of our recycler view.
-            if (item.getCosName().toLowerCase().contains(text.toLowerCase())) {
-                // if the item is matched we are
-                // adding it to our filtered list.
-                filteredlist.add(item);
-            }
-        }
-        if (filteredlist.isEmpty()) {
-            // if no item is added in filtered list we are
-            // displaying a toast message as no data found.
-            TastyToast.makeText(
-                    getApplicationContext(),
-                    "No Data Found..",
-                    TastyToast.LENGTH_LONG,
-                    TastyToast.CONFUSING
-            );
-
-        } else {
-            // at last we are passing that filtered
-            // list to our adapter class.
-            adapter.filterList(filteredlist);
-        }
-    }
+//    private void filter(String text) {
+//        // creating a new array list to filter our data.
+//        ArrayList<Pharmacy> filteredlist = new ArrayList<Pharmacy>();
+//
+//        // running a for loop to compare elements.
+//        for (Pharmacy item : pharmacyArrayList) {
+//            // checking if the entered string matched with any item of our recycler view.
+//            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
+//                // if the item is matched we are
+//                // adding it to our filtered list.
+//                filteredlist.add(item);
+//            }
+//        }
+//        if (filteredlist.isEmpty()) {
+//            // if no item is added in filtered list we are
+//            // displaying a toast message as no data found.
+//            TastyToast.makeText(
+//                    getApplicationContext(),
+//                    "No Data Found..",
+//                    TastyToast.LENGTH_LONG,
+//                    TastyToast.CONFUSING
+//            );
+//
+//        } else {
+//            // at last we are passing that filtered
+//            // list to our adapter class.
+//            adapter.filterList(filteredlist);
+//        }
+//    }
 
     private void getUserDetail() {
         String userId = (FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -271,6 +225,7 @@ public class Customer extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     /**

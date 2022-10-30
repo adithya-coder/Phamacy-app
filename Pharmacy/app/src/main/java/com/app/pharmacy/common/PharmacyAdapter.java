@@ -69,25 +69,26 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MyView
         holder.dec.setText(pharmacy.getDescription());
         holder.mobile.setText(pharmacy.getMobile());
 
-        if(pharmacy.getImage() !=null){
-            Bitmap bitmap= decodeBitmapAndSaveToFirebase(pharmacy.getImage());
+        if (pharmacy.getImage() != null) {
+            Bitmap bitmap = decodeBitmapAndSaveToFirebase(pharmacy.getImage());
             int maxHeight = 600;
             int maxWidth = 300;
-            float scale = Math.min(((float)maxHeight / bitmap.getWidth()), ((float)maxWidth / bitmap.getHeight()));
+            float scale = Math.min(((float) maxHeight / bitmap.getWidth()), ((float) maxWidth / bitmap.getHeight()));
 
             Matrix matrix = new Matrix();
             matrix.postScale(scale, scale);
 
             bitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-          if(bitmap != null) {
+            if (bitmap != null) {
                 Log.d("Image", bitmap.toString());
                 holder.logo.setImageBitmap(bitmap);
-           }
+            }
         }
 
 
     }
-    public Bitmap  decodeBitmapAndSaveToFirebase(String image) {
+
+    public Bitmap decodeBitmapAndSaveToFirebase(String image) {
         //decode base64 string to image
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         byte[] imageBytes = baos.toByteArray();
@@ -116,7 +117,7 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MyView
             delete_button = (Button) itemView.findViewById(R.id.delete_button);
             update_button = (Button) itemView.findViewById(R.id.update_button);
             logo = (ImageView) itemView.findViewById(R.id.logo);
-;
+            ;
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -128,6 +129,11 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.MyView
                     context.startActivity(i);
                 }
             });
+
+            /**
+             *
+             *  delete pharmacy
+             */
             delete_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
