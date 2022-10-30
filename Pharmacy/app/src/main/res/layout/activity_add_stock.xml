@@ -3,11 +3,12 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cosImagebtn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:theme="@style/Theme.MaterialComponents.Bridge"
-    tools:context=".AddPharmacy">
+    android:theme="@style/Theme.MaterialComponents.Light.Bridge"
+    tools:context=".AddStock">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -19,44 +20,157 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorPrimarygreen"
-            app:title=" Stock"
             android:theme="@android:style/Theme.Material"
-            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24" />
+            app:navigationIcon="@drawable/ic_baseline_arrow_back_ios_24"
+            app:title=" Stock" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
-        android:orientation="vertical"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="70dp"
         android:layout_marginEnd="10dp"
-        android:theme="@android:style/Theme.Material">
+        android:orientation="vertical"
+        android:theme="@android:style/Theme.Material.Light">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <GridLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_margin="10sp"
+            android:columnCount="2"
+            android:rowCount="5">
 
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/drugs_button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/rounded_corner"
+                android:foregroundGravity="clip_vertical|center_horizontal"
+                app:cardCornerRadius="15dp"
+
+                >
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:theme="@android:style/Theme.Material.Light"
+                    app:srcCompat="@drawable/drugs" />
+
+                <TextView
+                    android:id="@+id/des1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/drugs"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cosmatic_button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:foregroundGravity="clip_vertical|center_horizontal"
+                app:cardCornerRadius="15dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+
+                    android:theme="@android:style/Theme.Material"
+                    app:srcCompat="@drawable/cosmatics" />
+
+                <TextView
+                    android:id="@+id/cos1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/cosmatis"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/firstaid_button"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:foregroundGravity="clip_vertical|center_horizontal"
+                app:cardCornerRadius="15dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+
+                    android:theme="@android:style/Theme.Material"
+                    app:srcCompat="@drawable/firstaid" />
+
+                <TextView
+                    android:id="@+id/des3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/first_Aid_items"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                android:foregroundGravity="clip_vertical|center_horizontal"
+                app:cardCornerRadius="15dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+
+                    android:theme="@android:style/Theme.Material"/>
+
+
+                <TextView
+                    android:id="@+id/des4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="100dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+
+
+        </GridLayout>
 
     </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/float_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:tint="@color/colorPrimarywhite"
-        android:contentDescription="Add"
-        app:fabSize="mini"
-        app:pressedTranslationZ="12dp"
-        android:layout_margin="24dp"
-        app:elevation="6dp"
-        app:srcCompat="@drawable/ic_baseline_add_24"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,27 +1,12 @@
 package com.app.pharmacy.common.entity;
 
-import java.io.Serializable;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Data
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class Cosmatic implements Serializable {
+public class Medicine {
 
     private String id;
 
-    private String cosName;
+    private String medicineName;
 
-    private String cosPrice;
+    private String mediPrice;
 
     private String email;
 
@@ -41,30 +26,6 @@ public class Cosmatic implements Serializable {
 
     private boolean isFirst;
 
-    public boolean isCosmatic() {
-        return isCosmatic;
-    }
-
-    public void setCosmatic(boolean cosmatic) {
-        isCosmatic = cosmatic;
-    }
-
-    public boolean isMedicine() {
-        return isMedicine;
-    }
-
-    public void setMedicine(boolean medicine) {
-        isMedicine = medicine;
-    }
-
-    public boolean isFirst() {
-        return isFirst;
-    }
-
-    public void setFirst(boolean first) {
-        isFirst = first;
-    }
-
     public String getId() {
         return id;
     }
@@ -73,20 +34,20 @@ public class Cosmatic implements Serializable {
         this.id = id;
     }
 
-    public String getCosName() {
-        return cosName;
+    public String getMedicineName() {
+        return medicineName;
     }
 
-    public void setCosName(String cosName) {
-        this.cosName = cosName;
+    public void setMedicineName(String medicineName) {
+        this.medicineName = medicineName;
     }
 
-    public String getCosPrice() {
-        return cosPrice;
+    public String getMediPrice() {
+        return mediPrice;
     }
 
-    public void setCosPrice(String cosPrice) {
-        this.cosPrice = cosPrice;
+    public void setMediPrice(String mediPrice) {
+        this.mediPrice = mediPrice;
     }
 
     public String getEmail() {
@@ -137,5 +98,32 @@ public class Cosmatic implements Serializable {
         this.pharmacyId = pharmacyId;
     }
 
-}
+    public boolean isCosmatic() {
+        return isCosmatic;
+    }
 
+    public void setCosmatic(boolean cosmatic) {
+        isCosmatic = cosmatic;
+    }
+
+    public boolean isMedicine() {
+        return isMedicine;
+    }
+
+    public void setMedicine(boolean medicine) {
+        isMedicine = medicine;
+    }
+
+    public boolean isFirst() {
+        return isFirst;
+    }
+
+    public void setFirst(boolean first) {
+        isFirst = first;
+    }
+
+
+
+    public class MyViewHolder {
+    }
+}

@@ -1,27 +1,11 @@
 package com.app.pharmacy.common.entity;
 
-import java.io.Serializable;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
-@Data
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-public class Cosmatic implements Serializable {
-
+public class FirstAid {
     private String id;
 
-    private String cosName;
+    private String firstItemName;
 
-    private String cosPrice;
+    private String firstPrice;
 
     private String email;
 
@@ -41,30 +25,6 @@ public class Cosmatic implements Serializable {
 
     private boolean isFirst;
 
-    public boolean isCosmatic() {
-        return isCosmatic;
-    }
-
-    public void setCosmatic(boolean cosmatic) {
-        isCosmatic = cosmatic;
-    }
-
-    public boolean isMedicine() {
-        return isMedicine;
-    }
-
-    public void setMedicine(boolean medicine) {
-        isMedicine = medicine;
-    }
-
-    public boolean isFirst() {
-        return isFirst;
-    }
-
-    public void setFirst(boolean first) {
-        isFirst = first;
-    }
-
     public String getId() {
         return id;
     }
@@ -73,20 +33,20 @@ public class Cosmatic implements Serializable {
         this.id = id;
     }
 
-    public String getCosName() {
-        return cosName;
+    public String getFirstItemName() {
+        return firstItemName;
     }
 
-    public void setCosName(String cosName) {
-        this.cosName = cosName;
+    public void setFirstItemName(String firstItemName) {
+        this.firstItemName = firstItemName;
     }
 
-    public String getCosPrice() {
-        return cosPrice;
+    public String getFirstPrice() {
+        return firstPrice;
     }
 
-    public void setCosPrice(String cosPrice) {
-        this.cosPrice = cosPrice;
+    public void setFirstPrice(String firstPrice) {
+        this.firstPrice = firstPrice;
     }
 
     public String getEmail() {
@@ -137,5 +97,27 @@ public class Cosmatic implements Serializable {
         this.pharmacyId = pharmacyId;
     }
 
-}
+    public boolean isCosmatic() {
+        return isCosmatic;
+    }
 
+    public void setCosmatic(boolean cosmatic) {
+        isCosmatic = cosmatic;
+    }
+
+    public boolean isMedicine() {
+        return isMedicine;
+    }
+
+    public void setMedicine(boolean medicine) {
+        isMedicine = medicine;
+    }
+
+    public boolean isFirst() {
+        return isFirst;
+    }
+
+    public void setFirst(boolean first) {
+        isFirst = first;
+    }
+}
