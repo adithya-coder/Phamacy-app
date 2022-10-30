@@ -198,7 +198,7 @@ public class UpdatePharmacy extends AppCompatActivity {
      * @param des
      * @param image
      */
-    private void update(String name, String phone, String email, String location, String des, String image) {
+    void update(String name, String phone, String email, String location, String des, String image) {
         Pharmacy pharmacys = (Pharmacy) getIntent().getSerializableExtra("pharmacy");
         Pharmacy pharmacy = new Pharmacy();
         pharmacy.setName(name);

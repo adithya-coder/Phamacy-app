@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import com.app.pharmacy.common.CustomerAdapter;
 import com.app.pharmacy.common.PharmacyAdapter;
+import com.app.pharmacy.common.entity.Cosmatic;
 import com.app.pharmacy.common.entity.Pharmacy;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -48,7 +49,7 @@ public class Customer extends AppCompatActivity {
     private View topAppBar;
     private FloatingActionButton float_button;
     private RecyclerView view;
-    private ArrayList<Pharmacy> pharmacyArrayList;
+    private ArrayList<Cosmatic> pharmacyArrayList;
     private CustomerAdapter adapter;
     private FirebaseFirestore db;
     private TextView name, names, username;
@@ -95,7 +96,12 @@ public class Customer extends AppCompatActivity {
                         );
                         break;
                     case R.id.add_phar:
-                        startActivity(new Intent(getApplicationContext(), AddPharmacy.class));
+                        TastyToast.makeText(
+                                getApplicationContext(),
+                                "required permission !",
+                                TastyToast.LENGTH_LONG,
+                                TastyToast.WARNING
+                        );
 
                         break;
                     case R.id.setting:
@@ -150,30 +156,29 @@ public class Customer extends AppCompatActivity {
         view = findViewById(R.id.rcView);
         view.setHasFixedSize(true);
 
-        view.setLayoutManager(   new LinearLayoutManager(this));
+        view.setLayoutManager(new LinearLayoutManager(this));
         //view.setLayoutManager(new LinearLayoutManager(this));
         db = FirebaseFirestore.getInstance();
         getUserDetail();
-        pharmacyArrayList = new ArrayList<Pharmacy>();
+        pharmacyArrayList = new ArrayList<Cosmatic>();
         adapter = new CustomerAdapter(Customer.this, pharmacyArrayList);
 
         float_button = findViewById(R.id.float_button);
 
-
-        float_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AddPharmacy.class));
-            }
-        });
-
+        float_button.hide();
+//        float_button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), AddPharmacy.class));
+//            }
+//        });
         view.setAdapter(adapter);
         EventChangeListener();
     }
 
     private void EventChangeListener() {
         String userId = (FirebaseAuth.getInstance().getCurrentUser().getUid());
-        db.collection("pharmacy").whereIn("userId", Collections.singletonList(userId)).addSnapshotListener(new EventListener<QuerySnapshot>() {
+        db.collection("stock").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
 
@@ -190,7 +195,7 @@ public class Customer extends AppCompatActivity {
                     //  if(dc.getDocument().getString("userId").toString() == userId.toString()){
                     if (dc.getType() == DocumentChange.Type.ADDED) {
 
-                        Pharmacy pharmacy = dc.getDocument().toObject(Pharmacy.class);
+                        Cosmatic pharmacy = dc.getDocument().toObject(Cosmatic.class);
                         pharmacy.setId(dc.getDocument().getId());
                         System.out.println("\nimagesssssssss----------------------\n" + pharmacy.getImage());
                         pharmacyArrayList.add(pharmacy);
@@ -220,12 +225,12 @@ public class Customer extends AppCompatActivity {
 //    }
     private void filter(String text) {
         // creating a new array list to filter our data.
-        ArrayList<Pharmacy> filteredlist = new ArrayList<Pharmacy>();
+        ArrayList<Cosmatic> filteredlist = new ArrayList<Cosmatic>();
 
         // running a for loop to compare elements.
-        for (Pharmacy item : pharmacyArrayList) {
+        for (Cosmatic item : pharmacyArrayList) {
             // checking if the entered string matched with any item of our recycler view.
-            if (item.getName().toLowerCase().contains(text.toLowerCase())) {
+            if (item.getCosName().toLowerCase().contains(text.toLowerCase())) {
                 // if the item is matched we are
                 // adding it to our filtered list.
                 filteredlist.add(item);
@@ -266,7 +271,6 @@ public class Customer extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     /**

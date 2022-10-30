@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.pharmacy.AddStock;
 import com.app.pharmacy.R;
+import com.app.pharmacy.common.entity.Cosmatic;
 import com.app.pharmacy.common.entity.Pharmacy;
 import com.app.pharmacy.common.entity.ProductRequest;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,11 +36,11 @@ import lombok.NonNull;
 
 public class CustomerAdapter extends RecyclerView.Adapter<com.app.pharmacy.common.CustomerAdapter.MyViewHolder> {
     private Context context;
-    private ArrayList<Pharmacy> pharmacyArrayList;
+    private ArrayList<Cosmatic> pharmacyArrayList;
     private String productId;
     private String pharmacyId;
 
-    public CustomerAdapter(Context context, ArrayList<Pharmacy> pharmacyArrayList) {
+    public CustomerAdapter(Context context, ArrayList<Cosmatic> pharmacyArrayList) {
         this.context = context;
         this.pharmacyArrayList = pharmacyArrayList;
     }
@@ -60,7 +61,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<com.app.pharmacy.commo
         this.pharmacyId = pharmacyId;
     }
 
-    public void filterList(ArrayList<Pharmacy> filterlist) {
+    public void filterList(ArrayList<Cosmatic> filterlist) {
         // below line is to add our filtered
         // list in our course array list.
         pharmacyArrayList = filterlist;
@@ -77,10 +78,10 @@ public class CustomerAdapter extends RecyclerView.Adapter<com.app.pharmacy.commo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Pharmacy pharmacy = pharmacyArrayList.get(position);
-        holder.name.setText(pharmacy.getName());
-        holder.dec.setText(pharmacy.getDescription());
-        holder.mobile.setText(pharmacy.getMobile());
+        Cosmatic pharmacy = pharmacyArrayList.get(position);
+        holder.name.setText(pharmacy.getCosName());
+        holder.dec.setText(pharmacy.getDescription()+" Powerd By : "+pharmacy.getManfacture()+" Contact : "+pharmacy.getEmail());
+        holder.mobile.setText("Rs "+pharmacy.getCosPrice()+". 00");
         setPharmacyId(pharmacy.getId());
         setProductId(pharmacy.getUserId());
 
@@ -99,8 +100,6 @@ public class CustomerAdapter extends RecyclerView.Adapter<com.app.pharmacy.commo
                 holder.logo.setImageBitmap(bitmap);
             }
         }
-
-
     }
 
     public Bitmap decodeBitmapAndSaveToFirebase(String image) {
@@ -137,7 +136,7 @@ public class CustomerAdapter extends RecyclerView.Adapter<com.app.pharmacy.commo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Pharmacy pharmacy = pharmacyArrayList.get(getAdapterPosition());
+                    Cosmatic pharmacy = pharmacyArrayList.get(getAdapterPosition());
                     // below line is creating a new intent.
                     Intent i = new Intent(context, AddStock.class);
                     i.putExtra("pharmacy", pharmacy);

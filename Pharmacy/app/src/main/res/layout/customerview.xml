@@ -18,6 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:orientation="vertical"
         >
 
@@ -28,13 +29,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="5dp">
+            android:background="@color/colorAccent"
+           >
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/logo"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="20dp"
+                android:layout_margin="1dp"
                 android:src="@drawable/penadol" />
 
             <LinearLayout
@@ -58,7 +62,7 @@
                     android:layout_marginTop="8dp"
                     android:text="Mobile"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textColor="@color/colorPrimaryBlack"
                     android:textSize="15dp" />
 
                 <TextView
@@ -68,7 +72,7 @@
                     android:layout_marginTop="14dp"
                     android:text="Description"
                     android:textAppearance="?attr/textAppearanceBody2"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textColor="@color/colorPrimaryBlack"
                     android:textSize="12dp" />
             </LinearLayout>
 
@@ -96,7 +100,7 @@
             tools:ignore="SpeakableTextPresentCheck" />
 
 
-            tools:ignore="SpeakableTextPresentCheck" />
+
 
 
     </LinearLayout>
