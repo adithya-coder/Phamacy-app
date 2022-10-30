@@ -15,9 +15,9 @@
             android:icon="@drawable/medical_services_24"
             android:title="New Pharmacy" />
         <item
-            android:id="@+id/noti"
-            android:icon="@drawable/notifications_24"
-            android:title="Notification" />
+            android:id="@+id/request"
+            android:icon="@drawable/ic_baseline_send_24"
+            android:title="Customer Request" />
 
     </group>
     <item android:title="Advance">
