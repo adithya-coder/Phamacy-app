@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pharmacy">
         <activity
+
             android:name=".FirstaidStock"
             android:exported="false" />
         <activity
@@ -40,6 +41,11 @@
         <activity
             android:name=".AddCosmatic"
             android:exported="false" />
+            
+        <activity
+            android:name=".RequestApprove"
+            android:exported="true" />
+
         <activity
             android:name=".UpdateUser"
             android:exported="true" />

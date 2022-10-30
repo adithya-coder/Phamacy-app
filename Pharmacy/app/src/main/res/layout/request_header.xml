@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/Item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="#A7D8A9"
+    android:foregroundGravity="clip_vertical|center_horizontal"
+    android:theme="@style/Theme.MaterialComponents.Light.Bridge"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="4dp"
+    >
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+
+        android:theme="@android:style/Theme.Material"
+        app:srcCompat="@drawable/penadol" />
+
+    <TextView
+        android:id="@+id/namep1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/product"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="230dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/update"
+
+
+        />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="280dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/close"
+
+
+        />
+</androidx.cardview.widget.CardView>
+
+
+
+
+

@@ -42,6 +42,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:layout_marginRight="20dp"
+            android:backgroundTint="@color/colorPrimarygreen"
             android:background="@drawable/rounded_corner"
             android:foregroundGravity="clip_vertical|center_horizontal"
             app:cardCornerRadius="15dp"
@@ -66,34 +67,9 @@
                 android:textStyle="bold" />
         </androidx.cardview.widget.CardView>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="#ffffff"
-            android:foregroundGravity="clip_vertical|center_horizontal"
-            app:cardCornerRadius="15dp">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:layout_width="150dp"
-                android:layout_height="100dp"
 
-                android:theme="@android:style/Theme.Material"
-                app:srcCompat="@drawable/penadol" />
 
-            <TextView
-                android:id="@+id/des2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="100dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/product"
-                android:textColor="@android:color/black"
-                android:textStyle="bold" />
-        </androidx.cardview.widget.CardView>
 
 
 

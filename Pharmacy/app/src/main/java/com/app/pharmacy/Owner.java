@@ -92,14 +92,9 @@ public class Owner extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Owner.class));
 
                         break;
-                    case R.id.noti:
-                        //startActivity(new Intent(getApplicationContext(), Login.class));
-                        TastyToast.makeText(
-                                getApplicationContext(),
-                                "Notification !",
-                                TastyToast.LENGTH_LONG,
-                                TastyToast.INFO
-                        );
+                    case R.id.request:
+                        startActivity(new Intent(getApplicationContext(), RequestApprove.class));
+
                         break;
                     case R.id.add_phar:
                         startActivity(new Intent(getApplicationContext(), AddPharmacy.class));
