@@ -62,10 +62,6 @@ public class cosmaticStock extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cosmatic_stock);
 
-
-        //  view.setHasFixedSize(true);
-        //   view.setLayoutManager(new LinearLayoutManager(this));
-
         db = FirebaseFirestore.getInstance();
         cosmaticArrayList = new ArrayList<Cosmatic>();
         adapter = new CosmaticAdapter(cosmaticStock.this, cosmaticArrayList);

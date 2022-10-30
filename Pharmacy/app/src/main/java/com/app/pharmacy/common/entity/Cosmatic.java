@@ -41,6 +41,16 @@ public class Cosmatic implements Serializable {
 
     private boolean isFirst;
 
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public boolean isCosmatic() {
         return isCosmatic;
     }

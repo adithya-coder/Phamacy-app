@@ -197,7 +197,7 @@ public class CosmaticAdapter extends RecyclerView.Adapter<CosmaticAdapter.MyView
                             if (task.isSuccessful()) {
                                 TastyToast.makeText(
                                         context,
-                                        "Your Cosmatic details has been Successfully delete!",
+                                        "Your Medicine details has been Successfully delete!",
                                         TastyToast.LENGTH_SHORT,
                                         TastyToast.SUCCESS
 
@@ -208,7 +208,7 @@ public class CosmaticAdapter extends RecyclerView.Adapter<CosmaticAdapter.MyView
                             } else {
                                 TastyToast.makeText(
                                         context,
-                                        "Fail to delete Cosmatic details",
+                                        "Fail to delete Medicine details",
                                         TastyToast.LENGTH_LONG,
                                         TastyToast.ERROR
                                 );
