@@ -14,6 +14,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Pharmacy">
         <activity
+            android:name=".FirstaidStock"
+            android:exported="false" />
+        <activity
+            android:name=".AddFirstaid"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateMedicine"
+            android:exported="false" />
+        <activity
+            android:name=".MedicineStock"
+            android:exported="false" />
+        <activity
+            android:name=".AddMedicine"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateCosmatic"
+            android:exported="false" />
+        <activity
+            android:name=".UpdateCosmatics"
+            android:exported="false" />
+        <activity
+            android:name=".cosmaticStock"
+            android:exported="false" />
+        <activity
+            android:name=".AddCosmatic"
+            android:exported="false" />
+        <activity
             android:name=".UpdateUser"
             android:exported="true" />
         <activity

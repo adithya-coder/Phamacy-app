@@ -1,6 +1,7 @@
 package com.app.pharmacy;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,14 +24,17 @@ public class AddStock extends AppCompatActivity {
     private ArrayList<Pharmacy> pharmacyArrayList;
     private PharmacyAdapter adapter;
     private FirebaseFirestore db;
+    private CardView drugs_button;
+    private CardView cosmatic_button;
+    private CardView firstaid_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
       //  getSupportActionBar().hide();
         setContentView(R.layout.activity_add_stock);
-        view = findViewById(R.id.rcView);
-        view.setHasFixedSize(true);
-        view.setLayoutManager(new LinearLayoutManager(this));
+//        view = findViewById(R.id.rcView);
+//        view.setHasFixedSize(true);
+//        view.setLayoutManager(new LinearLayoutManager(this));
 
         db = FirebaseFirestore.getInstance();
         pharmacyArrayList = new ArrayList<Pharmacy>();
@@ -38,13 +42,11 @@ public class AddStock extends AppCompatActivity {
 
         topAppBar = findViewById(R.id.topAppBar);
         float_button = findViewById(R.id.float_button);
+        drugs_button = findViewById(R.id.drugs_button);
+        cosmatic_button = findViewById(R.id.cosmatic_button);
+        firstaid_button = findViewById(R.id.firstaid_button);
 
-        float_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AddPharmacy.class));
-            }
-        });
+
         topAppBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +54,35 @@ public class AddStock extends AppCompatActivity {
                 finish();
             }
         });
-        view.setAdapter(adapter);
+
+        drugs_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), MedicineStock.class));
+                finish();
+            }
+        });
+
+        cosmatic_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), cosmaticStock.class));
+                finish();
+            }
+        });
+
+
+        firstaid_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), FirstaidStock.class));
+                finish();
+            }
+        });
+
+
+
+
+
     }
 }

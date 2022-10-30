@@ -46,6 +46,18 @@
     <string name="search">Search</string>
     <string name="logout">Logout</string>
     <string name="pharAddInfo">Checked your desired Pharmacy</string>
+    <string name="price" />
+    <string name="Cosmatic_title" />
+    <string name="Cosmatic_name">Comatic Title</string>
+    <string name="cosmatic_price">Price</string>
+    <string name="cos_manu">Manufacture</string>
+    <string name="first_Aid_items">First Aid Items</string>
+    <string name="cosmatis">Cosmatics</string>
+    <string name="medicine">Title of Medicine</string>
+    <string name="add_firstaid">First Aid Items</string>
+    <string name="add_firstaidItems">Add First Aid Items</string>
+    <string name="first">Name of the First Aid Items</string>
+    <string name="cosmatics">Cosmatic</string>
 
 
 </resources>
